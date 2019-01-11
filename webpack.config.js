@@ -1,18 +1,47 @@
-const { resolve } = require('path')
-const htmlPlugin = require('html-webpack-plugin')
+const { resolve } = require("path");
+const HtmlPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 module.exports = {
-  entry: './src/app/index.js',
+  entry: "./src/index.js",
   output: {
-    path: resolve('dist'),
-    filename: 'bundle.js'
+    path: resolve("dist"),
+    filename: "bundle.js"
   },
   devServer: {
-    port: 3000
+    port: 4200,
+    compress: true
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader"]
+      },
+      {
+        test: /\.(jpe?g|png)$/i,
+        loaders: ["file-loader?name=[name].[ext]", "webp-loader?{quality: 50}"]
+      }
+    ]
   },
   plugins: [
-    new htmlPlugin({
-      template: './src/index.html'
+    new HtmlPlugin({
+      template: "./src/index.html",
+      minify: {
+        collapseWhitespace: true
+      }
+    }),
+    new MiniCssExtractPlugin({
+      filename: "style.css"
+    }),
+    new OptimizeCssAssetsPlugin({
+      assetNameRegExp: /\.css$/g,
+      cssProcessor: require("cssnano"),
+      cssProcessorPluginOptions: {
+        preset: ["default", { discardComments: { removeAll: true } }]
+      },
+      canPrint: true
     })
   ]
-}
+};

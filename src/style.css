@@ -1,0 +1,27 @@
+@import url(https://fonts.googleapis.com/css?family=Kaushan+Script);
+
+body {
+  background-color: #1565C0;
+  font-family: "Kaushan Script", cursive;
+  color: #ECFFFD;
+  margin: 0;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.img {
+  height: 150px;
+  width: 150px;
+  border: 2px solid #ECFFFD;
+  border-radius: 150px;
+}
+
+.job{
+  margin-top: -25px;
+}
