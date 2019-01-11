@@ -1,0 +1,34 @@
+@import url(https://fonts.googleapis.com/css?family=Kaushan+Script);
+
+$blueKingColor: #1565c0;
+$borderWhite: 2px solid #ecfffd;
+
+@mixin middle_custom {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+body {
+  background-color: $blueKingColor;
+  font-family: "Kaushan Script", cursive;
+  color: #ecfffd;
+  margin: 0;
+}
+
+.center {
+  @include middle_custom;
+}
+
+.avatar {
+  height: 150px;
+  width: 150px;
+  border: $borderWhite;
+  border-radius: 150px;
+}
+
+.job {
+  margin-top: -25px;
+}

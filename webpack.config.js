@@ -20,7 +20,24 @@ module.exports = {
         use: [MiniCssExtractPlugin.loader, "css-loader"]
       },
       {
-        test: /\.(jpe?g|png)$/i,
+        test: /\.scss$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader
+          },
+          {
+            loader: "css-loader"
+          },
+          {
+            loader: "sass-loader",
+            options: {
+              implementation: require("sass")
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(ico|gif|png|jpe?g|svg)$/,
         loaders: ["file-loader?name=[name].[ext]", "webp-loader?{quality: 50}"]
       }
     ]
