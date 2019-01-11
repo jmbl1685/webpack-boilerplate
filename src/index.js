@@ -8,7 +8,9 @@ const { name, job, avatar } = info;
 
 const template = `
   <div class="center">
-    <img class="avatar" src=${avatar}/>
+    <div class="avatar">
+      <img src=${avatar}/>
+    </div>  
     <h1 class="name">${name}</h1>
     <h3 class="job">${job}<h3>
   </div>

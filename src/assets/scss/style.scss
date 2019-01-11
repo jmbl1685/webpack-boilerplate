@@ -1,7 +1,12 @@
 @import url(https://fonts.googleapis.com/css?family=Kaushan+Script);
 
 $blueKingColor: #1565c0;
-$borderWhite: 2px solid #ecfffd;
+$borderWhite: 4px solid #ecfffd;
+
+@font-face {
+  font-family: CheriLiney;
+  src: url(../fonts/CheriLiney.ttf);
+}
 
 @mixin middle_custom {
   display: flex;
@@ -13,7 +18,7 @@ $borderWhite: 2px solid #ecfffd;
 
 body {
   background-color: $blueKingColor;
-  font-family: "Kaushan Script", cursive;
+  font-family: "CheriLiney", cursive;
   color: #ecfffd;
   margin: 0;
 }
@@ -23,10 +28,14 @@ body {
 }
 
 .avatar {
-  height: 150px;
-  width: 150px;
   border: $borderWhite;
-  border-radius: 150px;
+  padding: 25px;
+  border-radius: 100px;
+}
+
+.avatar img {
+  height: 100px;
+  width: 100px;
 }
 
 .job {

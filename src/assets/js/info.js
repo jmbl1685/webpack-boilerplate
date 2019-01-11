@@ -1,5 +1,5 @@
 export const info = {
-  name: "Juan Manuel Batty Linero",
-  job: "FullStack .NET and Javascript Developer",
-  avatar: require("../img/photo.png")
+  name: "Webpack Boilerplate",
+  job: "Juan Batty - jmbl1685",
+  avatar: require("../img/1168654.svg")
 };

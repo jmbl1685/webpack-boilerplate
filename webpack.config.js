@@ -37,14 +37,21 @@ module.exports = {
         ]
       },
       {
-        test: /\.(ico|gif|png|jpe?g|svg)$/,
+        test: /\.(ico|gif|png|jpe?g|woff|eot|ttf|mp4)$/,
         loaders: ["file-loader?name=[name].[ext]", "webp-loader?{quality: 50}"]
+      },
+      {
+        test: /\.svg/,
+        use: {
+          loader: "svg-url-loader",
+          options: {}
+        }
       }
     ]
   },
   plugins: [
     new HtmlPlugin({
-      template: "./src/index.html",
+      template: "./public/index.html",
       minify: {
         collapseWhitespace: true
       }
