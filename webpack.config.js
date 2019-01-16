@@ -2,12 +2,13 @@ const { resolve } = require("path");
 const HtmlPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.js",
   output: {
     path: resolve("dist"),
-    filename: "bundle.js"
+    filename: "bundle.[hash:6].chunk.js"
   },
   devServer: {
     port: 4200,
@@ -38,7 +39,17 @@ module.exports = {
       },
       {
         test: /\.(ico|gif|png|jpe?g|woff|eot|ttf|mp4)$/,
-        loaders: ["file-loader?name=[name].[ext]", "webp-loader?{quality: 50}"]
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[hash:6].chunk.[ext]"
+            }
+          },
+          {
+            loader: "webp-loader?{quality: 50}"
+          }
+        ]
       },
       {
         test: /\.svg/,
@@ -57,7 +68,7 @@ module.exports = {
       }
     }),
     new MiniCssExtractPlugin({
-      filename: "style.css"
+      filename: "styles.[hash:6].chunk.css"
     }),
     new OptimizeCssAssetsPlugin({
       assetNameRegExp: /\.css$/g,
@@ -66,6 +77,7 @@ module.exports = {
         preset: ["default", { discardComments: { removeAll: true } }]
       },
       canPrint: true
-    })
+    }),
+    new CleanWebpackPlugin(["dist"], { verbose: true, dry: false })
   ]
 };

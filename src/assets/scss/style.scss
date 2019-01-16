@@ -1,5 +1,3 @@
-@import url(https://fonts.googleapis.com/css?family=Kaushan+Script);
-
 $blueKingColor: #1565c0;
 $borderWhite: 4px solid #ecfffd;
 
@@ -27,17 +25,26 @@ body {
   @include middle_custom;
 }
 
-.avatar {
+.logo {
   border: $borderWhite;
   padding: 25px;
   border-radius: 100px;
 }
 
-.avatar img {
+.logo img {
   height: 100px;
   width: 100px;
+  -webkit-animation-name: spin;
+  -webkit-animation-duration: 5000ms;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
 }
 
-.job {
-  margin-top: -25px;
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
